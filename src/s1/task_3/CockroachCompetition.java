@@ -20,6 +20,7 @@ public class CockroachCompetition {
         judge.addCockroachToRun("Eldar");
         judge.addCockroachToRun("Irka");
         judge.addCockroachToRun("Mashka");
+        judge.addCockroachToRun("Romka");
         judge.startRun(3);
     }
 }
