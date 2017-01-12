@@ -1,7 +1,7 @@
 package s2.task_4;
 
 /**
- *
+ * Class describes Employee with hourly salary type
  */
 
 public class HourlyPayEmployee extends Employee {

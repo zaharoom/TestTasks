@@ -2,6 +2,9 @@ package s2.task_4;
 
 import java.io.Serializable;
 
+/**
+ * Class describes typical employee with two types of salary "fixed" and "hourly" pay.
+ */
 public abstract class Employee implements Serializable, Comparable {
 
     /**
@@ -13,9 +16,9 @@ public abstract class Employee implements Serializable, Comparable {
      */
     public static final String EMPL_TYPE_FIXED = "fixed";
 
-    private String employeeType;
-    private String name;
-    private double averageSalary;
+    private String employeeType; //Type of the salary
+    private String name;         //Name of employee
+    private double averageSalary;//Average salary of Employee
 
     public Employee(String employeeType, String name, double averageSalary) {
         this.name = name;
@@ -43,12 +46,24 @@ public abstract class Employee implements Serializable, Comparable {
         return 0;
     }
 
+    /**
+     * Get average salary
+     * @return average salary value
+     */
     public abstract double getAverageSalary();
 
+    /**
+     * Get name of current employee instance
+     * @return name of current Employee
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get Employee salary type
+     * @return employee type "fixed" or "hourly"
+     */
     public String getEmployeeType() {
         return employeeType;
     }

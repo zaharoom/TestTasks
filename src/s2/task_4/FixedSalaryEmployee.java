@@ -1,7 +1,7 @@
 package s2.task_4;
 
 /**
- *
+ * Class describes Employee with fixed salary type
  */
 public class FixedSalaryEmployee extends Employee {
 

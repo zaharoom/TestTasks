@@ -40,10 +40,10 @@ public class AnyCompany {
 
         while (running) {
             switch (scanner.nextInt()) {
-                case 1:
+                case 1: //Show Employees list
                     showList();
                     break;
-                case 2:
+                case 2: //Show first 5 names of Employees
                     int counter = 0;
                     Iterator<Employee> iter = employees.iterator();
                     while (counter < 5) {
@@ -52,7 +52,7 @@ public class AnyCompany {
                         counter++;
                     }
                     break;
-                case 3:
+                case 3: //Show last 3 types of Employee salary
                     counter = 0;
                     iter = employees.descendingIterator();
                     while (counter < 3) {
@@ -61,16 +61,19 @@ public class AnyCompany {
                         counter++;
                     }
                     break;
-                case 4:
+                case 4: //Add new Employee to list
                     addNewEmployee();
                     break;
-                default:
+                default: //Exit from program
                     running = false;
             }
             saveEmployees();
         }
     }
 
+    /**
+     * Method needs to show list of employees
+     */
     private static void showList() {
         System.out.println("type     " + "name   " + "average_salary\n");
         for (Employee e : employees) {
@@ -78,6 +81,10 @@ public class AnyCompany {
         }
     }
 
+    /**
+     * To add new Employee you need to write new type which described in constant value in Employee class.
+     * Also needs to write name and salary according to Employee salary type.
+     */
     private static void addNewEmployee() {
         String type = "", name = "";
         double salary = 0d;
@@ -103,6 +110,10 @@ public class AnyCompany {
         saveEmployees();
     }
 
+    /**
+     * If file with saved employees is not exists then
+     * this default values will be added
+     */
     private static void fillList() {
         employees.add(new FixedSalaryEmployee("Josh", 3000));
         employees.add(new HourlyPayEmployee("Jon", 18));
@@ -116,19 +127,24 @@ public class AnyCompany {
         employees.add(new FixedSalaryEmployee("Josh", 3100));
     }
 
+
+    /**
+     * If file with employees already exists - load it from local catalogue
+     */
     private static void loadEmployees() {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("employees.ser"));
             employees = (TreeSet<Employee>) ois.readObject();
         } catch (FileNotFoundException e) {
             fillList(); //If serialization not processed anytime fill by default values or file name wrong
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Serialization of collection with employees
+     */
     private static void saveEmployees() {
         try {
             ObjectOutputStream oostr = new ObjectOutputStream(new FileOutputStream("employees.ser"));
